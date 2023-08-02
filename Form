@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulário AVC</title>
+  <style>
+/* Estilos gerais para o formulário */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+/* Estilos específicos para as perguntas */
+div[id^="pergunta"] {
+  margin-bottom: 20px;
+}
+
+/* Estilo para a pergunta 5 */
+#pergunta5 label,
+#pergunta6 label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Estilo para as caixas de texto de outras respostas */
+#outrasDoencas,
+#outrasMedicacoes {
+  width: 200px;
+}
+
+/* Estilo para o resultado */
+#resultado {
+  margin-top: 30px;
+}
+
+#resultado h2 {
+  text-align: center;
+}
+
+#resultado ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Novo estilo para as respostas das perguntas 9 e 10 */
+#resultado ul {
+  list-style-type: disc; /* Bullet points redondos */
+  margin-left: 20px; /* Espaçamento da lista em relação ao texto */
+}
+
+#resultado li {
+  margin-bottom: 5px; /* Espaçamento entre os itens da lista */
+}
+
+button[type="button"][onclick^="proximo"] {
+  float: right;
+  background-color: green;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-bottom: 40px;
+}
+
+button[type="button"][onclick^="voltar"] {
+  float: left;
+  background-color: red;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-bottom: 40px;
+}
+
+#resultado button[type="button"][onclick^="copiar"] {
+  float: left;
+  background-color: green;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-bottom: 40px;
+}
+
+#resultado button[type="button"][onclick^="voltarAoInicio"] {
+  float: right;
+  background-color: blue;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-bottom: 40px;
+}
+
+/* Outros estilos personalizados podem ser adicionados conforme necessário */
+</style>
+</head>
+<body>
+  <h1>Formulário AVC</h1>
+  <form id="meuFormulario">
+    <div id="pergunta1">
+      <label for="resposta1">1. Paciente é suspeita de AVC em janela terapêutica (trombolise / trombectomia)?</label><br>
+      <input type="radio" name="resposta1" value="Sim" required> Sim<br>
+      <input type="radio" name="resposta1" value="Não"> Não<br><br>
+      <button type="button" onclick="proximo('pergunta1', 'pergunta2')">Próximo</button>
+    </div>
+
+    <div id="pergunta2" style="display: none;">
+      <label for="resposta2">2. Quanto ao início dos sintomas</label><br>
+      <input type="radio" name="resposta2" value="Foi presenciado e bem definido" required> Foi presenciado e bem definido<br>
+      <input type="radio" name="resposta2" value="Foi encontrado ou acordou já com os sintomas"> Foi encontrado ou acordou já com os sintomas<br><br>
+      <button type="button" onclick="voltar('pergunta2', 'pergunta1')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta2', 'pergunta3')">Próximo</button>
+    </div>
+
+    <div id="pergunta3" style="display: none;">
+      <!-- Pergunta 3 -->
+      <label for="resposta3">3. Quando o paciente foi visto bem a última vez (Ictus)?</label><br>
+      Data: <input type="text" name="resposta3_data" maxlength="10" pattern="\d{2}/\d{2}" placeholder="DD/MM" required><br>
+      Hora: <input type="text" name="resposta3_hora" maxlength="5" pattern="\d{2}:\d{2}" placeholder="HH:MM" required><br><br>
+      <button type="button" onclick="voltar('pergunta3', 'pergunta2')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta3', 'pergunta4')">Próximo</button>
+    </div>
+
+    <div id="pergunta4" style="display: none;">
+      <label for="resposta4">4. Qual a funcionalidade prévia do paciente?</label><br>
+      <input type="radio" name="resposta4" value="Independente para realizar quaisquer atividades sem auxílio (mRS 0 ou 1)" required> Independente para realizar quaisquer atividades sem auxílio (mRS 0 ou 1)<br>
+      <input type="radio" name="resposta4" value="Precisa de auxílio pontual para algumas atividades e é capaz de deambular sem auxílio (mRS 2 ou 3)"> Precisa de auxílio pontual para algumas atividades e é capaz de deambular sem auxílio (mRS 2 ou 3)<br>
+      <input type="radio" name="resposta4" value="Precisa de auxílio para várias atividades (comer, tomar banho, se vestir, etc) ou precisa de auxílio para andar com uso de muletas ou cadeiras de rodas, ou chegando a passar a maior parte do tempo inerte, sentado ou acamado (mRS 4 ou 5)"> Precisa de auxílio para várias atividades (comer, tomar banho, se vestir, etc) ou precisa de auxílio para andar com uso de muletas ou cadeiras de rodas, ou chegando a passar a maior parte do tempo inerte, sentado ou acamado (mRS 4 ou 5)<br><br>
+      <button type="button" onclick="voltar('pergunta4', 'pergunta3')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta4', 'pergunta5')">Próximo</button>
+    </div>
+
+    <div id="pergunta5" style="display: none;">
+      <label for="resposta5">5. Possui alguma doença prévia?</label><br>
+      <input type="checkbox" name="resposta5" value="Nenhuma" required> Nenhuma<br>
+      <input type="checkbox" name="resposta5" value="Hipertensão (HAS)"> Hipertensão (HAS)<br>
+      <input type="checkbox" name="resposta5" value="Diabetes (DM)"> Diabetes (DM)<br>
+      <input type="checkbox" name="resposta5" value="Colesterol alto (Dislipidemia)"> Colesterol alto (Dislipidemia)<br>
+      <input type="checkbox" name="resposta5" value="Derrame (AVC)"> Derrame (AVC)<br>
+      <input type="checkbox" name="resposta5" value="Infarto (IAM)"> Infarto (IAM)<br>
+      <input type="checkbox" name="resposta5" value="Arritmia"> Arritmia<br>
+      <input type="checkbox" name="resposta5" value="Cardiopatia"> Cardiopatia<br>
+      <input type="checkbox" name="resposta5" value="Tabagismo"> Tabagismo<br>
+      <input type="checkbox" name="resposta5" value="Etilismo"> Etilismo<br>
+      <input type="checkbox" name="resposta5" value="Hipotireodismo"> Hipotireodismo<br>
+      <input type="checkbox" name="resposta5" value="Câncer"> Câncer<br>
+      <input type="checkbox" name="resposta5" value="Doença Renal (DRC)"> Doença Renal (DRC)<br>
+      <input type="checkbox" name="resposta5" value="Outras" onclick="exibirCampoTexto('outrasDoencas')"> Outras<br>
+      <input type="text" id="outrasDoencas" maxlength="50" style="display: none;"><br><br>
+      <button type="button" onclick="voltar('pergunta5', 'pergunta4')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta5', 'pergunta6')">Próximo</button>
+    </div>
+
+    <div id="pergunta6" style="display: none;">
+      <label for="resposta6">6. Faz uso de alguma medicação?</label><br>
+      <input type="checkbox" name="resposta6" value="Nenhuma" required> Nenhuma<br>
+      <input type="checkbox" name="resposta6" value="Remédio para pressão: Captopril, Losartana, Enalapril, Valsartana, Hidroclorotiazida, Furosemida, Anlodipino, Nifedipino ou outros"> Remédio para pressão: Captopril, Losartana, Enalapril, Valsartana, Hidroclorotiazida, Furosemida, Anlodipino, Nifedipino ou outros<br>
+      <input type="checkbox" name="resposta6" value="Remédio para diabetes: Metformina, Glibenclamida, Glimepirida, Gliclazida, Insulina, Dapagliflozina, Alogliptina, Vildagliptina, Sitagliptina, Linagliptina, Liraglutida, Semaglutida"> Remédio para diabetes: Metformina, Glibenclamida, Glimepirida, Gliclazida, Insulina, Dapagliflozina, Alogliptina, Vildagliptina, Sitagliptina, Linagliptina, Liraglutida, Semaglutida<br>
+      <input type="checkbox" name="resposta6" value="Remédio para Cardiopatia: Propranolol, Atenolol, Metoprolol, Carvedilol, Bisoprolol"> Remédio para Cardiopatia: Propranolol, Atenolol, Metoprolol, Carvedilol, Bisoprolol<br>
+      <input type="checkbox" name="resposta6" value="AAS (Somalgin Cardio, Aspirina Prevent, Ecasil)"> AAS (Somalgin Cardio, Aspirina Prevent, Ecasil)<br>
+      <input type="checkbox" name="resposta6" value="Outros Antiagregantes: Clopidogrel, Prasugrel, Ticagrelor"> Outros Antiagregantes: Clopidogrel, Prasugrel, Ticagrelor<br>
+      <input type="checkbox" name="resposta6" value="Anticoagulantes: Marevan, Varfarina, Xarelto, Rivaroxabana, Pradaxa, Eliquis, Lixiana"> Anticoagulantes: Marevan, Varfarina, Xarelto, Rivaroxabana, Pradaxa, Eliquis, Lixiana<br>
+      <input type="checkbox" name="resposta6" value="Anticoncepcional"> Anticoncepcional<br>
+      <input type="checkbox" name="resposta6" value="Anticonvulsivante"> Anticonvulsivante<br>
+      <input type="checkbox" name="resposta6" value="Outra" onclick="exibirCampoTexto('outrasMedicacoes')"> Outra<br>
+      <input type="text" id="outrasMedicacoes" maxlength="100" style="display: none;"><br><br>
+      <button type="button" onclick="voltar('pergunta6', 'pergunta5')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta6', 'pergunta7')">Próximo</button>
+    </div>
+
+    <div id="pergunta7" style="display: none;">
+      <label for="resposta7">7. O paciente possui alguma dessas condições abaixo (contraindicações a trombólise):</label><br>
+      <input type="checkbox" name="resposta7" value="Uso de Anticoagulantes"> Uso de Anticoagulantes<br>
+      <input type="checkbox" name="resposta7" value="História de AVC Hemorrágico ou Malformação Arteriovenosa (MAV)"> História de AVC Hemorrágico ou Malformação Arteriovenosa (MAV)<br>
+      <input type="checkbox" name="resposta7" value="AVC Isquemico ou Trauma importante nos últimos 3 meses"> AVC Isquemico ou Trauma importante nos últimos 3 meses<br>
+      <input type="checkbox" name="resposta7" value="Hemorragia nas últimas 2 semanas (pela urina, pelas fezes ou vômito com sangue)"> Hemorragia nas últimas 2 semanas (pela urina, pelas fezes ou vômito com sangue)<br>
+      <input type="checkbox" name="resposta7" value="Cirurgia de grande porte nas últimas 2 semanas"> Cirurgia de grande porte nas últimas 2 semanas<br>
+      <input type="checkbox" name="resposta7" value="Punção arterial ou punção lombar na última semana"> Punção arterial ou punção lombar na última semana<br>
+      <input type="checkbox" name="resposta7" value="Discrasias sanguíneas (hemofilia ou sabidamente com alteração na coagulação)"> Discrasias sanguíneas (hemofilia ou sabidamente com alteração na coagulação)<br>
+      <input type="checkbox" name="resposta7" value="Gestante"> Gestante<br>
+      <input type="checkbox" name="resposta7" value="Suspeita de Endocardite, Êmbolo Séptico, Dissecção de Aorta ou Hemorragia Subaracnóide"> Suspeita de Endocardite, Êmbolo Séptico, Dissecção de Aorta ou Hemorragia Subaracnóide<br>
+      <input type="checkbox" name="resposta7" value="NENHUMA das opções acima (sem contraindicações)"> NENHUMA das opções acima (sem contraindicações)<br><br>
+      <button type="button" onclick="voltar('pergunta7', 'pergunta6')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta7', 'pergunta8')">Próximo</button>
+    </div>
+
+    <div id="pergunta8" style="display: none;">
+      <label for="resposta8">8. Qual o peso do paciente (em Kg)?</label><br>
+      <input type="text" name="resposta8" maxlength="3" pattern="\d*" required> Kg<br><br>
+      <button type="button" onclick="voltar('pergunta8', 'pergunta7')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta8', 'pergunta9')">Próximo</button>
+    </div>
+
+    <div id="pergunta9" style="display: none;">
+      <label for="resposta9">9. Informe os Sinais Vitais:</label><br>
+      Pressão Arterial Sistólica <input type="text" name="resposta9" maxlength="3" pattern="\d*" required> mmHg<br>
+      Pressão Arterial Diastólica <input type="text" name="resposta9" maxlength="3" pattern="\d*" required> mmHg<br>
+      Frequência Cardíaca <input type="text" name="resposta9" maxlength="3" pattern="\d*" required> bpm<br>
+      Glicemia <input type="text" name="resposta9" maxlength="3" pattern="\d*" required> mg/dl<br>
+      Saturação de Oxigênio <input type="text" name="resposta9" maxlength="3" pattern="\d*" required> %<br><br>
+      <button type="button" onclick="voltar('pergunta9', 'pergunta8')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta9', 'pergunta10')">Próximo</button>
+    </div>
+
+    <div id="pergunta10" style="display: none;">
+      <label for="resposta10">10. Selecione abaixo as alterações clínicas que o paciente apresenta no momento desta avaliação:</label><br>
+      <input type="checkbox" name="resposta10" value="Fraqueza a Direita"> Fraqueza a Direita<br>
+      <input type="checkbox" name="resposta10" value="Fraqueza a Esquerda"> Fraqueza a Esquerda<br>
+      <input type="checkbox" name="resposta10" value="Alteração de Linguagem"> Alteração de Linguagem<br>
+      <input type="checkbox" name="resposta10" value="Dormência a Direita"> Dormência a Direita<br>
+      <input type="checkbox" name="resposta10" value="Dormência a Esquerda"> Dormência a Esquerda<br>
+      <input type="checkbox" name="resposta10" value="Fala enrolada"> Fala enrolada<br>
+      <input type="checkbox" name="resposta10" value="Alteração de Coordenação"> Alteração de Coordenação<br>
+      <input type="checkbox" name="resposta10" value="Alteração Visual"> Alteração Visual<br>
+      <input type="checkbox" name="resposta10" value="Alteração da Consciência (sonolência, comatoso, etc.)"> Alteração da Consciência (sonolência, comatoso, etc.)<br><br>
+      <button type="button" onclick="voltar('pergunta10', 'pergunta9')">Voltar</button>
+      <button type="button" onclick="proximo('pergunta10', 'resultado')">Finalizar</button>
+    </div>
+
+
+    <div id="resultado" style="display: none;">
+      <!-- Código para gerar o resultado do formulário -->
+      <h2>Resultado do Formulário:</h2>
+      <p>Paciente é suspeita de AVC em janela terapêutica (trombólise/trombectomia): <span id="resultado1"></span></p>
+      <p>Quanto ao início dos sintomas: <span id="resultado2"></span></p>
+      <p>Quando o paciente foi visto bem a última vez (Ictus): <span id="resultado3_data"></span> às <span id="resultado3_hora"></span></p>
+      <p>Funcionalidade prévia do paciente: <span id="resultado4"></span></p>
+      <p>Doença prévia: <span id="resultado5"></span></p>
+      <p>Medicações em uso: <span id="resultado6"></span></p>
+      <p>Contraindicações a trombólise: <span id="resultado7"></span></p>
+      <p>Peso do paciente: <span id="resultado8"></span> Kg</p>
+      <p>Sinais Vitais:</p>
+      <ul>
+        <li>Pressão Arterial Sistólica: <span id="resultado9_sistolica"></span> mmHg</li>
+        <li>Pressão Arterial Diastólica: <span id="resultado9_diastolica"></span> mmHg</li>
+        <li>Frequência Cardíaca: <span id="resultado9_fc"></span> bpm</li>
+        <li>Glicemia: <span id="resultado9_glicemia"></span> mg/dl</li>
+        <li>Saturação de Oxigênio: <span id="resultado9_sat_oxigenio"></span> %</li>
+      </ul>
+      <p>Alterações clínicas do paciente:</p>
+      <ul id="resultado10"></ul>
+
+    <button type="button" onclick="copiarResultado()">Copiar Resultado</button>
+    <button type="button" onclick="voltarAoInicio()">Voltar ao Início</button>
+
+    </div>
+  </form>
+
+  <script>
+    // Função para avançar para a próxima pergunta
+    function proximo(perguntaAtual, proximaPergunta) {
+      document.getElementById(perguntaAtual).style.display = 'none';
+      if (proximaPergunta === "resultado") {
+        gerarResultado()
+      } else {
+        document.getElementById(proximaPergunta).style.display = 'block';
+      }
+    }
+
+    // Função para voltar para a pergunta anterior
+    function voltar(perguntaAtual, perguntaAnterior) {
+      document.getElementById(perguntaAtual).style.display = 'none';
+      document.getElementById(perguntaAnterior).style.display = 'block';
+    }
+
+    // Função para voltar ao início do formulário
+    function voltarAoInicio() {
+      document.getElementById('resultado').style.display = 'none'; // Oculta o resultado
+      document.getElementById('pergunta1').style.display = 'block'; // Mostra a primeira pergunta
+    }
+
+    // Função para exibir campo de texto quando selecionar a opção "Outra" em questões com opção "Outra"
+    function exibirCampoTexto(idCampo) {
+      document.getElementById(idCampo).style.display = 'inline';
+    }
+
+  // Função para gerar o resultado do formulário ao final
+  function gerarResultado() {
+    const form = document.getElementById('meuFormulario');
+    const resultado1 = form.resposta1.value;
+    const resultado2 = form.resposta2.value;
+    const resultado3_data = form.resposta3_data.value;
+    const resultado3_hora = form.resposta3_hora.value;
+    const resultado4 = form.resposta4.value;
+    const resultado5 = obterRespostasCheckbox('resposta5');
+    const resultado5_outras = resultado5.includes('Outras') ? form.outrasDoencas.value : '';
+    const resultado6 = obterRespostasCheckbox('resposta6');
+    const resultado6_outras = resultado6.includes('Outra') ? form.outrasMedicacoes.value : '';
+    const resultado7 = obterRespostasCheckbox('resposta7');
+    const resultado8 = form.resposta8.value;
+    const resultado9_sistolica = form.resposta9[0].value;
+    const resultado9_diastolica = form.resposta9[1].value;
+    const resultado9_fc = form.resposta9[2].value;
+    const resultado9_glicemia = form.resposta9[3].value;
+    const resultado9_sat_oxigenio = form.resposta9[4].value;
+    const resultado10 = obterRespostasCheckbox('resposta10');
+
+    // Exibir os resultados no elemento "resultado"
+    document.getElementById('resultado1').innerText = resultado1;
+    document.getElementById('resultado2').innerText = resultado2;
+    document.getElementById('resultado3_data').innerText = resultado3_data;
+    document.getElementById('resultado3_hora').innerText = resultado3_hora;
+    document.getElementById('resultado4').innerText = resultado4;
+    document.getElementById('resultado5').innerText = resultado5.join(", ");
+    document.getElementById('resultado6').innerText = resultado6.join(", ");
+    document.getElementById('resultado5').innerText = resultado5.includes('Outras') ? `${resultado5.join(", ")}, ${resultado5_outras}` : resultado5.join(", ");
+    document.getElementById('resultado6').innerText = resultado6.includes('Outra') ? `${resultado6.join(", ")}, ${resultado6_outras}` : resultado6.join(", ");
+    document.getElementById('resultado7').innerText = resultado7.join(", ");
+    document.getElementById('resultado8').innerText = resultado8;
+    document.getElementById('resultado9_sistolica').innerText = resultado9_sistolica;
+    document.getElementById('resultado9_diastolica').innerText = resultado9_diastolica;
+    document.getElementById('resultado9_fc').innerText = resultado9_fc;
+    document.getElementById('resultado9_glicemia').innerText = resultado9_glicemia;
+    document.getElementById('resultado9_sat_oxigenio').innerText = resultado9_sat_oxigenio;
+
+    const resultado10List = document.getElementById('resultado10');
+    resultado10List.innerHTML = '';
+    for (const resposta of resultado10) {
+      const listItem = document.createElement('li');
+      listItem.innerText = resposta;
+      resultado10List.appendChild(listItem);
+    }
+
+      // Exibir o elemento "resultado" e ocultar o restante do formulário
+      document.getElementById('resultado').style.display = 'block';
+      //form.style.display = 'none';
+    }
+
+    // Função auxiliar para obter as respostas de checkboxes
+    function obterRespostasCheckbox(name) {
+      const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+      const respostas = Array.from(checkboxes).map(checkbox => checkbox.value);
+      return respostas;
+    }
+
+    // Função para copiar o resultado para a área de transferência
+    function copiarResultado() {
+      const resultado = document.getElementById('resultado');
+      const range = document.createRange();
+      range.selectNode(resultado);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      document.execCommand('copy');
+      selection.removeAllRanges();
+
+      alert('Resultado copiado para a área de transferência. Agora você pode colá-lo onde desejar.');
+}
+
+  </script>
+</body>
+</html>
