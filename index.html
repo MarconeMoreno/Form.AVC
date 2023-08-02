@@ -117,24 +117,24 @@ button[type="button"][onclick^="voltar"] {
 }
 
 /* Media query para telas menores */
-@media screen and (max-width: 1200px),
-       screen and (max-device-width: 1200px) {
+@media screen and (max-width: 768px),
+       screen and (max-device-width: 2160px) {
   button[type="button"][onclick^="proximo"],
   button[type="button"][onclick^="voltar"],
   #resultado button[type="button"][onclick^="copiar"],
   #resultado button[type="button"][onclick^="voltarAoInicio"] {
-    font-size: 18px; /* Tamanho da fonte aumentado em telas menores */
+    font-size: 22px; /* Tamanho da fonte aumentado em telas menores */
   }
   
   /* Ajuste do tamanho do texto em telas menores */
   body {
-    font-size: 18px;
+    font-size: 22px;
   }
   
   /* Ajuste do tamanho do texto nos botões em telas menores */
   button[type="button"],
   #resultado button[type="button"] {
-    font-size: 18px;
+    font-size: 22px;
   }
 }
 
