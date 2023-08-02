@@ -117,7 +117,8 @@ button[type="button"][onclick^="voltar"] {
 }
 
 /* Media query para telas menores */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1200px),
+       screen and (max-device-width: 1200px) {
   button[type="button"][onclick^="proximo"],
   button[type="button"][onclick^="voltar"],
   #resultado button[type="button"][onclick^="copiar"],
