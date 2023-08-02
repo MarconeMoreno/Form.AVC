@@ -132,19 +132,24 @@ button[type="button"][onclick^="voltar"] {
   }
 }
 
-/* Estilos para telas de celular com até 480 pixels de largura */
-@media screen and (max-width: 480px) {
-  body {
-    font-size: 12px; /* Tamanho da fonte reduzido ainda mais para telas de celular */
-  }
-
-  /* Estilos para os botões em telas de celular */
+/* Media query para telas menores */
+@media screen and (max-width: 768px) {
   button[type="button"][onclick^="proximo"],
   button[type="button"][onclick^="voltar"],
   #resultado button[type="button"][onclick^="copiar"],
   #resultado button[type="button"][onclick^="voltarAoInicio"] {
-    width: 100%; /* Ocupa toda a largura disponível */
-    margin-bottom: 10px; /* Espaçamento entre os botões reduzido */
+    font-size: 18px; /* Tamanho da fonte aumentado em telas menores */
+  }
+  
+  /* Ajuste do tamanho do texto em telas menores */
+  body {
+    font-size: 18px;
+  }
+  
+  /* Ajuste do tamanho do texto nos botões em telas menores */
+  button[type="button"],
+  #resultado button[type="button"] {
+    font-size: 18px;
   }
 }
 
