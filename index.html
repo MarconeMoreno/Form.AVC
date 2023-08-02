@@ -76,38 +76,6 @@ div[id^="pergunta"] {
   margin-bottom: 5px; /* Espaçamento entre os itens da lista */
 }
 
-/* Estilos para telas de até 600 pixels de largura */
-@media screen and (max-width: 600px) {
-  body {
-    font-size: 14px; /* Tamanho da fonte reduzido para melhor ajuste em telas menores */
-  }
-
-  /* Estilos para os botões */
-  button[type="button"][onclick^="proximo"],
-  button[type="button"][onclick^="voltar"],
-  #resultado button[type="button"][onclick^="copiar"],
-  #resultado button[type="button"][onclick^="voltarAoInicio"] {
-    width: 100%; /* Ocupa toda a largura disponível */
-    margin-bottom: 10px; /* Espaçamento entre os botões reduzido */
-  }
-}
-
-/* Estilos para telas de celular com até 480 pixels de largura */
-@media screen and (max-width: 480px) {
-  body {
-    font-size: 12px; /* Tamanho da fonte reduzido ainda mais para telas de celular */
-  }
-
-  /* Estilos para os botões em telas de celular */
-  button[type="button"][onclick^="proximo"],
-  button[type="button"][onclick^="voltar"],
-  #resultado button[type="button"][onclick^="copiar"],
-  #resultado button[type="button"][onclick^="voltarAoInicio"] {
-    width: 100%; /* Ocupa toda a largura disponível */
-    margin-bottom: 10px; /* Espaçamento entre os botões reduzido */
-  }
-}
-
 button[type="button"][onclick^="proximo"] {
   float: right;
   background-color: green;
@@ -146,6 +114,38 @@ button[type="button"][onclick^="voltar"] {
   font-weight: bold;
   padding: 10px 20px;
   margin-bottom: 40px;
+}
+
+/* Estilos para telas de até 600 pixels de largura */
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px; /* Tamanho da fonte reduzido para melhor ajuste em telas menores */
+  }
+
+  /* Estilos para os botões */
+  button[type="button"][onclick^="proximo"],
+  button[type="button"][onclick^="voltar"],
+  #resultado button[type="button"][onclick^="copiar"],
+  #resultado button[type="button"][onclick^="voltarAoInicio"] {
+    width: 100%; /* Ocupa toda a largura disponível */
+    margin-bottom: 10px; /* Espaçamento entre os botões reduzido */
+  }
+}
+
+/* Estilos para telas de celular com até 480 pixels de largura */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 12px; /* Tamanho da fonte reduzido ainda mais para telas de celular */
+  }
+
+  /* Estilos para os botões em telas de celular */
+  button[type="button"][onclick^="proximo"],
+  button[type="button"][onclick^="voltar"],
+  #resultado button[type="button"][onclick^="copiar"],
+  #resultado button[type="button"][onclick^="voltarAoInicio"] {
+    width: 100%; /* Ocupa toda a largura disponível */
+    margin-bottom: 10px; /* Espaçamento entre os botões reduzido */
+  }
 }
 
 /* Outros estilos personalizados podem ser adicionados conforme necessário */
