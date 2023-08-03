@@ -29,7 +29,6 @@ label {
 input[type="radio"],
 input[type="checkbox"] {
   margin-right: 5px;
-  font-size: 2vh; 
   transform: scale(2); /* Aumenta o tamanho em 2 vezes (você pode ajustar o valor conforme necessário) */
 }
 
@@ -55,7 +54,6 @@ div[id^="pergunta"] {
 #outrasDoencas,
 #outrasMedicacoes {
   width: 300px;
-  height: 2vh;
 }
 
 /* Estilo para o resultado */
@@ -68,21 +66,22 @@ div[id^="pergunta"] {
 }
 
 #resultado ul {
+  font-size: 2vh;
   list-style: none;
   padding-left: 0;
-}
+  }
 
 /* Novo estilo para as respostas das perguntas 9 e 10 */
 #resultado ul {
   list-style-type: disc; /* Bullet points redondos */
-  margin-left: 20px; /* Espaçamento da lista em relação ao texto */
   font-size: 2vh;
+  margin-left: 20px; /* Espaçamento da lista em relação ao texto */
 }
 
 #resultado li {
-  margin-bottom: 5px; /* Espaçamento entre os itens da lista */
   font-size: 2vh;
-}
+  margin-bottom: 5px; /* Espaçamento entre os itens da lista */
+  }
 
 button[type="button"][onclick^="proximo"] {
   float: right;
@@ -131,7 +130,7 @@ button[type="button"][onclick^="voltar"] {
   <h1>Formulário AVC</h1>
   <form id="meuFormulario">
     <div id="pergunta1">
-      <label for="resposta1">1. Paciente é suspeita de AVC em janela terapêutica (trombolise / trombectomia)?</label><br>
+      <label for="resposta1">1. Paciente é suspeita de AVC em janela terapêutica (menos de 4h30min do início dos sintomas)?</label><br>
       <input type="radio" name="resposta1" value="Sim" required> Sim<br>
       <input type="radio" name="resposta1" value="Não"> Não<br><br>
       <button type="button" onclick="proximo('pergunta1', 'pergunta2')">Próximo</button>
@@ -254,7 +253,7 @@ button[type="button"][onclick^="voltar"] {
     <div id="resultado" style="display: none;">
       <!-- Código para gerar o resultado do formulário -->
       <h2>Resultado do Formulário:</h2>
-      <p>Paciente é suspeita de AVC em janela terapêutica (trombólise/trombectomia): <span id="resultado1"></span></p>
+      <p>Paciente é suspeita de AVC em janela terapêutica (menos de 4h30min do início dos sintomas): <span id="resultado1"></span></p>
       <p>Quanto ao início dos sintomas: <span id="resultado2"></span></p>
       <p>Quando o paciente foi visto bem a última vez (Ictus): <span id="resultado3_data"></span> às <span id="resultado3_hora"></span></p>
       <p>Funcionalidade prévia do paciente: <span id="resultado4"></span></p>
