@@ -7,6 +7,7 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
+  font-size: 22px;
   margin: 20px;
   max-width: 800px;
   margin: 0 auto;
@@ -114,28 +115,6 @@ button[type="button"][onclick^="voltar"] {
   font-weight: bold;
   padding: 10px 20px;
   margin-bottom: 40px;
-}
-
-/* Media query para telas menores */
-@media screen and (max-width: 2160px),
-       screen and (max-device-width: 2160px) {
-  button[type="button"][onclick^="proximo"],
-  button[type="button"][onclick^="voltar"],
-  #resultado button[type="button"][onclick^="copiar"],
-  #resultado button[type="button"][onclick^="voltarAoInicio"] {
-    font-size: 22px; /* Tamanho da fonte aumentado em telas menores */
-  }
-  
-  /* Ajuste do tamanho do texto em telas menores */
-  body {
-    font-size: 22px;
-  }
-  
-  /* Ajuste do tamanho do texto nos botões em telas menores */
-  button[type="button"],
-  #resultado button[type="button"] {
-    font-size: 22px;
-  }
 }
 
 /* Outros estilos personalizados podem ser adicionados conforme necessário */
