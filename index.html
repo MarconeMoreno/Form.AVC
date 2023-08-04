@@ -417,10 +417,8 @@ function copiarResultado() {
   const resultado = document.getElementById('resultado').cloneNode(true);
 
   // Remove os botões "Voltar ao Início" e "Copiar Resultado" do resultado clonado
-  const resultadoButtons = resultado.querySelectorAll('.resultado-button');
-  for (const button of resultadoButtons) {
-    button.parentNode.removeChild(button);
-  }
+  const resultadoButtons = resultado.querySelectorAll('button');
+  resultadoButtons.forEach(button => button.remove());
 
   const range = document.createRange();
   range.selectNode(resultado);
