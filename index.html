@@ -13,19 +13,15 @@ body {
   margin: 0 auto;
 }
 
-#imagemGovMA {
-  background-image: url("https://raw.githubusercontent.com/MarconeMoreno/Form.AVC/main/Logo%20GovMA.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top center;
+#imagensContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#imagemProgramaAVC {
-  margin-top: 30px;
-  background-image: url("https://raw.githubusercontent.com/MarconeMoreno/Form.AVC/main/Logo%20Programa%20AVC.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top center;
+#imagemGovMA, #imagemProgramaAVC {
+  width: 70%; /* Ajuste a largura conforme necessário */
+  margin-bottom: 30px;
 }
 
 h1 {
@@ -169,8 +165,10 @@ button[type="button"][onclick^="voltar"] {
 </style>
 </head>
 <body>
-  <div id="imagemGovMA"></div>
-  <div id="imagemProgramaAVC"></div>
+  <div id="imagensContainer">
+    <img id="imagemGovMA" src="https://raw.githubusercontent.com/MarconeMoreno/Form.AVC/main/Logo%20GovMA.png" alt="Logo Governo do Maranhão">
+    <img id="imagemProgramaAVC" src="https://raw.githubusercontent.com/MarconeMoreno/Form.AVC/main/Logo%20Programa%20AVC.png" alt="Logo Programa AVC">
+  </div>
   
   <h1>Formulário AVC</h1>
   <form id="meuFormulario">
