@@ -415,11 +415,11 @@ button[type="button"][onclick^="voltar"] {
 // Função para copiar o resultado para a área de transferência
 function copiarResultado() {
   const resultado = document.getElementById('resultado').cloneNode(true);
-  
-  // Remove os elementos com a classe "resultado-button" do resultado clonado
-  const resultadoButtons = resultado.getElementsByClassName('resultado-button');
+
+  // Remove os botões "Voltar ao Início" e "Copiar Resultado" do resultado clonado
+  const resultadoButtons = resultado.querySelectorAll('.resultado-button');
   for (const button of resultadoButtons) {
-    button.remove();
+    button.parentNode.removeChild(button);
   }
 
   const range = document.createRange();
