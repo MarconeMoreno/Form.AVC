@@ -319,8 +319,8 @@ button[type="button"][onclick^="voltar"] {
       <p>Alterações clínicas do paciente:</p>
       <ul id="resultado10"></ul>
 
-    <button type="button" class="resultado-button" onclick="copiarResultado()">Copiar Resultado</button>
-    <button type="button" class="resultado-button" onclick="voltarAoInicio()">Voltar ao Início</button>
+    <button type="button" onclick="copiarResultado()">Copiar Resultado</button>
+    <button type="button" onclick="voltarAoInicio()">Voltar ao Início</button>
 
     </div>
   </form>
@@ -412,24 +412,19 @@ button[type="button"][onclick^="voltar"] {
       return respostas;
     }
 
-// Função para copiar o resultado para a área de transferência
-function copiarResultado() {
-  const resultado = document.getElementById('resultado').cloneNode(true);
+    // Função para copiar o resultado para a área de transferência
+    function copiarResultado() {
+      const resultado = document.getElementById('resultado');
+      const range = document.createRange();
+      range.selectNode(resultado);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
 
-  // Remove os botões "Voltar ao Início" e "Copiar Resultado" do resultado clonado
-  const resultadoButtons = resultado.querySelectorAll('button');
-  resultadoButtons.forEach(button => button.remove());
+      document.execCommand('copy');
+      selection.removeAllRanges();
 
-  const range = document.createRange();
-  range.selectNode(resultado);
-  const selection = window.getSelection();
-  selection.removeAllRanges();
-  selection.addRange(range);
-
-  document.execCommand('copy');
-  selection.removeAllRanges();
-
-  alert('Resultado copiado para a área de transferência. Agora você pode colá-lo onde desejar.');
+      alert('Resultado copiado para a área de transferência. Agora você pode colá-lo onde desejar.');
 }
 
   </script>
